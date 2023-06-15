@@ -1,10 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
+import { WebView } from 'react-native-webview';
 import { StyleSheet, Text, View } from 'react-native';
+
+const GOOGLE = 'https://www.google.com/';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>Hello World</Text>
+      <View style={{ width: 300, height: 300 }}>
+        <WebView source={{ url: GOOGLE }} onLoad={console.log('Loaded')} />
+      </View>
       <StatusBar style="auto" />
     </View>
   );
@@ -13,8 +19,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    // marginTop: 30,
     alignItems: 'center',
+    backgroundColor: '#fff',
     justifyContent: 'center',
   },
 });
