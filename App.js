@@ -1,14 +1,39 @@
 import { StatusBar } from 'expo-status-bar';
 import { WebView } from 'react-native-webview';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useRef, useEffect } from 'react';
+import { StyleSheet, BackHandler, View } from 'react-native';
 
-const GOOGLE = 'https://dev.ottermap.com';
+const OTTERMAP = 'https://dev.ottermap.com';
 
 export default function App() {
+  const webViewRef = useRef();
+
+  const handleBackButtonPress = () => {
+    try {
+      webViewRef.current?.goBack();
+    } catch (err) {
+      console.log('[handleBackButtonPress] Error : ', err.message);
+    }
+  };
+
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', handleBackButtonPress);
+    return () => {
+      BackHandler.removeEventListener(
+        'hardwareBackPress',
+        handleBackButtonPress
+      );
+    };
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={{ width: '100%', height: '100%' }}>
-        <WebView source={{ uri: GOOGLE }} onLoad={console.log('Loaded')} />
+        <WebView
+          ref={webViewRef}
+          source={{ uri: OTTERMAP }}
+          onLoad={console.log('Loaded')}
+        />
       </View>
       <StatusBar style="auto" />
     </View>
