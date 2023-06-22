@@ -6,11 +6,12 @@ import { StyleSheet, BackHandler, View } from 'react-native';
 const OTTERMAP = 'https://dev.ottermap.com';
 
 export default function App() {
-  const webViewRef = useRef();
+  const webViewRef = useRef(null);
 
   const handleBackButtonPress = () => {
     try {
       webViewRef.current?.goBack();
+      return true; // Prevent default behavior
     } catch (err) {
       console.log('[handleBackButtonPress] Error : ', err.message);
     }
@@ -31,6 +32,7 @@ export default function App() {
       <View style={{ width: '100%', height: '100%' }}>
         <WebView
           ref={webViewRef}
+          startInLoadingState
           source={{ uri: OTTERMAP }}
           onLoad={console.log('Loaded')}
         />
