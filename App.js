@@ -1,9 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { WebView } from 'react-native-webview';
 import React, { useRef, useEffect } from 'react';
-import { StyleSheet, BackHandler, View } from 'react-native';
+import { StyleSheet, BackHandler, View, Text } from 'react-native';
 
-const OTTERMAP = 'https://dev.ottermap.com';
+// const OTTERMAP = 'http://localhost:3000/';
+// const OTTERMAP = 'http://192.168.1.147:3000/';
+const OTTERMAP = 'http://66.94.102.196:3000/';
 
 export default function App() {
   const webViewRef = useRef(null);
@@ -47,7 +49,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 30,
     alignItems: 'center',
-    backgroundColor: '#222',
+    backgroundColor: '#fff',
     justifyContent: 'center',
   },
 });
