@@ -5,7 +5,7 @@ import { StyleSheet, BackHandler, View, Text } from 'react-native';
 
 // const OTTERMAP = 'http://localhost:3000/';
 // const OTTERMAP = 'http://192.168.1.147:3000/';
-const OTTERMAP = 'http://66.94.102.196:3000/';
+const OTTERMAP = 'http://66.94.101.202:3000/';
 
 export default function App() {
   const webViewRef = useRef(null);
